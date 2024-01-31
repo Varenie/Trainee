@@ -36,13 +36,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.varenie.trainee.R
 import com.varenie.trainee.presentation.theme.BlurWhite
 import com.varenie.trainee.presentation.theme.Purple80
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TraineeScreen() {
+fun TraineeScreen(
+    viewModel: TraineViewModel
+) {
     val isShowDialog = remember { mutableStateOf(false) }
     Scaffold(
         topBar = {
@@ -73,7 +76,10 @@ fun TraineeScreen() {
     )
 
     if (isShowDialog.value) {
-        WorkoutDialog(isShowDialog = isShowDialog)
+        WorkoutDialog(
+            isShowDialog = isShowDialog,
+            viewModel
+        )
     }
 }
 
@@ -116,7 +122,8 @@ private fun WorkoutListItem() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun WorkoutDialog(
-    isShowDialog: MutableState<Boolean>
+    isShowDialog: MutableState<Boolean>,
+    viewModel: TraineViewModel
 ) {
     AlertDialog(
         onDismissRequest = { isShowDialog.value = false },
@@ -144,7 +151,7 @@ private fun WorkoutDialog(
             )
 
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { viewModel.addWorkout(workoutName) },
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
@@ -161,11 +168,14 @@ private fun DialogPreview() {
         mutableStateOf(true)
     }
 
-    WorkoutDialog(isShowDialog = isShowDialog)
+    WorkoutDialog(
+        isShowDialog = isShowDialog,
+        hiltViewModel()
+    )
 }
 
 @Preview
 @Composable
 private fun TraineeScreenPreview() {
-    TraineeScreen()
+    TraineeScreen(hiltViewModel())
 }
