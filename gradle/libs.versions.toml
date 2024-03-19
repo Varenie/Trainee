@@ -1,6 +1,6 @@
 [versions]
 agp = "8.2.2"
-kotlin = "1.9.21"
+kotlin = "1.9.22"
 core-ktx = "1.12.0"
 junit = "4.13.2"
 androidx-test-ext-junit = "1.1.5"
@@ -10,9 +10,10 @@ activity-compose = "1.8.2"
 compose-bom = "2024.01.00"
 roomVersion = "2.6.1"
 kspVersion = "1.9.21-1.0.15"
-hiltVersion = "2.48"
-hiltPluginVersion = "2.44"
-hiltNavigationVersion = "1.1.0"
+hiltVersion = "2.51"
+hiltPluginVersion = "2.51"
+hiltNavigationVersion = "1.2.0"
+kapt = "1.9.22"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -42,5 +43,6 @@ hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", v
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
+#ksp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
+kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kapt"}
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltPluginVersion"}

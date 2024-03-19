@@ -2,7 +2,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.kapt)
     alias(libs.plugins.hilt)
 }
 
@@ -43,7 +43,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.7"
+        kotlinCompilerExtensionVersion = "1.5.10"
     }
     packaging {
         resources {
@@ -73,12 +73,12 @@ dependencies {
     //room
     implementation(libs.room)
     implementation(libs.room.coroutines)
-    ksp(libs.room.compiler)
+    kapt(libs.room.compiler)
     annotationProcessor(libs.room)
 
     //hilt
     implementation(libs.hilt)
-    ksp(libs.hilt.compiler)
+    kapt(libs.hilt.compiler)
     implementation(libs.hilt.navigation)
 }
 
